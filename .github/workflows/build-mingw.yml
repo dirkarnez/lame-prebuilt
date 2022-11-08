@@ -39,7 +39,8 @@ jobs:
             cd $workspace/lame-svn && 
             g++ --version && 
             ./configure --disable-rpath --disable-shared --enable-static --prefix="$(pwd)/${{ env.installationPath }}" &&
-            sed -i "s/HAVE_ICONV 1/HAVE_ICONV 0/g" ./config.h &&
+            sed -i "s/HAVE_ICONV.*/HAVE_ICONV 0/g" ./config.h &&
+            echo "$(<./config.h)"
             make VERBOSE=1 && make install
             
       - name: Archive Release
