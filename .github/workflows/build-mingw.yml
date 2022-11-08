@@ -42,7 +42,7 @@ jobs:
             echo $LDFLAGS &&
             echo $LIBS &&
             ./configure --help &&
-            ./configure --disable-rpath --enable-static --without-libiconv-prefix --prefix="$(pwd)/${{ env.installationPath }}" &&
+            ./configure --disable-rpath --disable-shared --enable-static --without-libiconv-prefix --prefix="$(pwd)/${{ env.installationPath }}" &&
             make VERBOSE=1 && make install
             
       - name: Archive Release
