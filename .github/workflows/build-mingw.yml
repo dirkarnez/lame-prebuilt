@@ -38,8 +38,8 @@ jobs:
             svn checkout svn://svn.code.sf.net/p/lame/svn/tags/${{ env.tagName }}/lame lame-svn &&
             cd $workspace/lame-svn && 
             g++ --version && 
-            sed -i '' 's/HAVE_ICONV 1/HAVE_ICONV 0/g' config.h &&
             ./configure --disable-rpath --disable-shared --enable-static --prefix="$(pwd)/${{ env.installationPath }}" &&
+            sed -i '' 's/HAVE_ICONV 1/HAVE_ICONV 0/g' config.h &&
             make VERBOSE=1 && make install
             
       - name: Archive Release
