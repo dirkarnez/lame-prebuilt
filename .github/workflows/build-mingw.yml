@@ -20,7 +20,7 @@ jobs:
         uses: msys2/setup-msys2@v2
         with:
           msystem: MINGW64
-          install: make autoconf automake libtool autogen perl
+          install: make autoconf automake libtool autogen
           
       - name: curl Apache-Subversion-1.14.2.zip
         shell: cmd
@@ -34,7 +34,7 @@ jobs:
         shell: msys2 {0}
         run: |
             workspace=$(pwd) &&
-            export PATH="$workspace/Apache-Subversion-1.14.2/bin:$workspace/msys64/usr/bin:/usr/bin" &&
+            export PATH="$workspace/mingw64:$workspace/mingw64/bin:$workspace/Apache-Subversion-1.14.2/bin:$workspace/msys64/usr/bin:/usr/bin" &&
             svn checkout svn://svn.code.sf.net/p/lame/svn/tags/${{ env.tagName }}/lame lame-svn
             cd lame-svn && 
             g++ --version && 
