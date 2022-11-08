@@ -37,13 +37,12 @@ jobs:
             export PATH="$workspace/mingw64:$workspace/mingw64/bin:$workspace/Apache-Subversion-1.14.2/bin:$workspace/msys64/usr/bin:/usr/bin" &&
             svn checkout svn://svn.code.sf.net/p/lame/svn/tags/${{ env.tagName }}/lame lame-svn
             cd lame-svn && 
-            svn merge --force -c6416,6410 svn://svn.code.sf.net/p/lame/svn/trunk/lame &&
             g++ --version && 
-            echo $CPPFLAGS &&
+            echo $CFLAGS &&
             echo $LDFLAGS &&
             echo $LIBS &&
             ./configure --help &&
-            ./configure --disable-rpath --disable-shared --enable-static --without-libiconv --without-libiconv-prefix --prefix="$(pwd)/${{ env.installationPath }}" &&
+            ./configure --disable-rpath --disable-shared --enable-static --without-iconv --without-libiconv --without-libiconv-prefix --prefix="$(pwd)/${{ env.installationPath }}" &&
             make VERBOSE=1 && make install
             
       - name: Archive Release
