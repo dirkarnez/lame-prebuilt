@@ -35,11 +35,10 @@ jobs:
         run: |
             workspace=$(pwd) &&
             export PATH="$workspace/mingw64:$workspace/mingw64/bin:$workspace/Apache-Subversion-1.14.2/bin:/usr/bin" &&
-            svn checkout svn://svn.code.sf.net/p/lame/svn/tags/${{ env.tagName }}/lame lame-svn
-            cd /usr/local/include &&
-            ls &&
+            svn checkout svn://svn.code.sf.net/p/lame/svn/tags/${{ env.tagName }}/lame lame-svn &&
             cd /usr/lib &&
             ls &&
+            pacman -R libiconv &&
             cd $workspace/lame-svn && 
             g++ --version && 
             echo $CFLAGS &&
