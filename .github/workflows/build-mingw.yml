@@ -9,12 +9,12 @@ on:
 jobs:
   build:
     name: Create Release
-    runs-on: windows-2019
+    runs-on: windows-latest
     env:
       libraryName: lame
       installationPath: lame-installation
       tagName: RELEASE__3_100
-      mingwTargetZip: lame-${{ github.ref_name }}-x86_64-posix-seh-rev0-8.1.0.zip
+      mingwTargetZip: lame-${{ github.ref_name }}-mingw64-x86_64-posix-seh-rev0-8.1.0.zip
     steps:
       - name: Install MSYS2
         uses: msys2/setup-msys2@v2
